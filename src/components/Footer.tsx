@@ -131,8 +131,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('doctors')} className="hover:text-white transition-colors text-left">
+                <button onClick={() => setActiveTab('doctors')} className="hover:text-white transition-colors text-left cursor-pointer">
                   Corpo Clínico
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('blog')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Blog & Artigos Clínicos
                 </button>
               </li>
               <li>
@@ -141,9 +146,19 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
                 </button>
               </li>
               <li>
-                <a href="#contacto" onClick={() => setActiveTab('home')} className="hover:text-white transition-colors text-left">
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setActiveTab('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('contacto');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }} 
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
                   Contactos & Marcações
-                </a>
+                </button>
               </li>
             </ul>
           </div>

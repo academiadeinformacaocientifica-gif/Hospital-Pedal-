@@ -65,20 +65,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             );
           })}
-          <a
-            href="#contacto"
-            onClick={(e) => {
-              e.preventDefault();
+          <button
+            type="button"
+            onClick={() => {
               setActiveTab('home');
               setTimeout(() => {
                 const el = document.getElementById('contacto');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="py-1.5 transition-colors hover:text-[#7a2230]"
+            className="py-1.5 transition-colors hover:text-[#7a2230] cursor-pointer"
           >
             Contactos
-          </a>
+          </button>
         </nav>
 
         {/* Action Controls */}
@@ -157,10 +156,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               ))}
 
-              <a
-                href="#contacto"
-                onClick={(e) => {
-                  e.preventDefault();
+              <button
+                type="button"
+                onClick={() => {
                   setActiveTab('home');
                   setMobileMenuOpen(false);
                   setTimeout(() => {
@@ -168,10 +166,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }, 100);
                 }}
-                className="text-left py-2.5 px-4 rounded-xl text-[#40544d] hover:bg-[#f6f9f8]"
+                className="text-left py-2.5 px-4 rounded-xl text-[#40544d] hover:bg-[#f6f9f8] cursor-pointer"
               >
                 Contactos
-              </a>
+              </button>
 
               <div className="pt-4 border-t border-[#d2e2dc] flex flex-col gap-3">
                 {user ? (

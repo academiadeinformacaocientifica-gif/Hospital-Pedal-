@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TabType, Doctor, ServiceItem } from '../types';
 import { HOSPITAL_IMAGES, DOCTORS, SERVICES_LIST } from '../data/hospitalData';
+import { BLOG_POSTS } from '../data/blogData';
 import {
   Calendar,
   Phone,
@@ -24,7 +25,8 @@ import {
   Award,
   MapPin,
   Smile,
-  Shield
+  Shield,
+  BookOpen
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -530,6 +532,77 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </motion.div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Blog Highlights Section */}
+      <section className="py-8 sm:py-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d7e6e0] text-[#283e37] text-xs font-mono tracking-widest uppercase mb-3">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Notícias & Artigos Clínicos</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#172621] tracking-tight">
+              Avanços da Medicina no Pedalé
+            </h2>
+            <p className="text-sm sm:text-base text-[#556963] mt-2 max-w-xl">
+              Fique informado sobre os avanços em cirurgia robótica, cuidados preventivos e comunicados oficiais.
+            </p>
+          </div>
+          <button
+            onClick={() => setActiveTab('blog')}
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#801b33] hover:text-[#5a1022] group cursor-pointer"
+          >
+            <span>Ver Todos os Artigos</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {BLOG_POSTS.slice(0, 3).map((post) => (
+            <div
+              key={post.id}
+              onClick={() => setActiveTab('blog')}
+              className="group cursor-pointer bg-white rounded-3xl border border-[#dde7e3] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="h-48 w-full overflow-hidden bg-[#172621] relative">
+                  <img
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#172621]/80 backdrop-blur-md text-white text-[11px] font-semibold uppercase tracking-wider">
+                    {post.category}
+                  </span>
+                </div>
+                <div className="p-5 sm:p-6">
+                  <div className="flex items-center gap-2 text-xs text-[#7d8f88] mb-2">
+                    <Calendar className="w-3.5 h-3.5 text-[#45645a]" />
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <Clock className="w-3.5 h-3.5 text-[#45645a]" />
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-[#172621] group-hover:text-[#801b33] transition-colors line-clamp-2 mb-2 leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#556963] line-clamp-2 leading-relaxed font-light">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-5 sm:px-6 py-4 border-t border-[#f0f4f2] bg-[#fafcfb] flex items-center justify-between">
+                <span className="text-xs text-[#283e37] font-medium">{post.author.name}</span>
+                <span className="text-xs font-bold text-[#801b33] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                  Ler Artigo <ChevronRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

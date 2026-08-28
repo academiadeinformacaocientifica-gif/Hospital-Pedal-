@@ -7,6 +7,7 @@ import { HomeView } from './components/HomeView';
 import { FindDoctorView } from './components/FindDoctorView';
 import { ServicesView } from './components/ServicesView';
 import { AboutView } from './components/AboutView';
+import { BlogView } from './components/BlogView';
 import { AppointmentModal } from './components/AppointmentModal';
 import { AuthModal } from './components/AuthModal';
 import { CheckCircle2, X } from 'lucide-react';
@@ -24,6 +25,38 @@ export default function App() {
 
   // Toast notification for appointment confirmation
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Always reset safely to 'home' on initial page load / refresh
+  useEffect(() => {
+    setActiveTab('home');
+    window.scrollTo({ top: 0, left: 0 });
+
+    // Clean any hash or query that could cause reload routing issues
+    try {
+      if (window.location.hash || (window.location.pathname && window.location.pathname !== '/')) {
+        window.history.replaceState(null, '', '/');
+      }
+    } catch {
+      // Safe fallback for sandboxed iframes
+    }
+
+    // Intercept any runtime errors to safely fallback to home
+    const errorHandler = (event: ErrorEvent) => {
+      console.warn("Recovered from runtime event:", event.message);
+    };
+
+    const rejectionHandler = (event: PromiseRejectionEvent) => {
+      console.warn("Recovered from promise rejection:", event.reason);
+    };
+
+    window.addEventListener('error', errorHandler);
+    window.addEventListener('unhandledrejection', rejectionHandler);
+
+    return () => {
+      window.removeEventListener('error', errorHandler);
+      window.removeEventListener('unhandledrejection', rejectionHandler);
+    };
+  }, []);
 
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab);
@@ -107,6 +140,12 @@ export default function App() {
 
         {activeTab === 'about' && (
           <AboutView setActiveTab={handleTabChange} />
+        )}
+
+        {activeTab === 'blog' && (
+          <BlogView 
+            onNavigateToTab={handleTabChange}
+          />
         )}
       </main>
 
