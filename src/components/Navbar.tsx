@@ -120,12 +120,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Menu Trigger */}
         <div className="flex items-center gap-2 lg:hidden">
           <button
-            onClick={() => setActiveTab('doctors')}
-            className="px-3.5 py-1.5 text-xs font-bold bg-[#45645a] text-white rounded-full md:hidden"
-          >
-            Agendar
-          </button>
-          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-[#283e37] hover:bg-[#eaf2ef] rounded-full transition-colors"
             id="mobile-menu-toggle"

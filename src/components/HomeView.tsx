@@ -137,9 +137,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             className="bg-[#d7e6e0] p-6 sm:p-7 rounded-3xl cursor-pointer border border-[#c2d9d1] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-[#283e37] mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                <MessageSquare className="w-6 h-6" />
-              </div>
               <h3 className="text-xl font-bold text-[#1b2b26] mb-1">
                 Consulta Online & Presencial
               </h3>
@@ -163,9 +160,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             className="bg-[#faecee] p-6 sm:p-7 rounded-3xl cursor-pointer border border-[#ebd0d5] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-[#7a2230] mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                <Pill className="w-6 h-6" />
-              </div>
               <h3 className="text-xl font-bold text-[#54141e] mb-1">
                 Farmácia & Medicamentos
               </h3>
@@ -189,9 +183,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             className="bg-[#e4eee9] p-6 sm:p-7 rounded-3xl cursor-pointer border border-[#cddfd7] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-white/80 flex items-center justify-center text-[#45645a] mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                <FlaskConical className="w-6 h-6" />
-              </div>
               <h3 className="text-xl font-bold text-[#233a33] mb-1">
                 Serviços de Laboratório
               </h3>
