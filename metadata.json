@@ -1,0 +1,6 @@
+{
+  "name": "Complexo Hospitalar do Pedalé",
+  "description": "Portal e sistema de agendamento do Complexo Hospitalar do Pedalé com serviços de excelência médica e corpo clínico especializado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
